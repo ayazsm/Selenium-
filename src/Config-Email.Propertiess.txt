@@ -1,0 +1,57 @@
+gmail_username=ayazssoft@gmail.com
+gmail_password=Ayaz@7575
+gmail_port=587
+gmail_from=manikantakumars123@gmail.com
+to=ayazssoft@gmail.com
+
+package OTP.AUTOMATION;
+
+import java.awt.List;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
+import javax.mail.Store;
+
+import com.testing.framework.DateTimeUtils;
+import com.testing.framework.EmailUtils;
+
+public class testutilities {
+
+	public static void main(String[] args) throws Exception {
+		// TODO Auto-generated method stub
+		EmailUtils emailUtils=new EmailUtils();
+		
+		
+		Properties prop=new Properties();
+		prop.load(new FileInputStream("C:\\Users\\Codet\\eclipse-workspace\\AUTOMATION\\Config"));
+		Store connection =emailUtils.connectToGmail(prop);
+		
+		
+		List<String> emailtext=emailUtils.getUnreadMessageByFromEmail(connection,"Inbox","manikantakumars123@gmail.com","Signup OTP Verification");
+		
+		
+		if (emailtext.size()<1)
+			
+			throw new Exception("No Email received");
+		else {
+			String regex="[^\\d]+";
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}
+
+
+
